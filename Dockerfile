@@ -21,6 +21,5 @@ RUN flutter build web
 ENV PORT 8080
 EXPOSE $PORT
 
-WORKDIR /usr/local/bin/app/server
-RUN chmod +x server.sh
-ENTRYPOINT sh server.sh $PORT
+RUN chmod +x /usr/local/bin/app/server/server.sh
+ENTRYPOINT sh /usr/local/bin/app/server/server.sh $PORT
