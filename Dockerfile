@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 # Setup 
-RUN apt-get update && apt-get install -y unzip xz-utils git openssh-client curl python3 sudo && apt-get upgrade -y && rm -rf /var/cache/apt
+RUN apt-get update && apt-get install -y unzip xz-utils git openssh-client curl python3 && apt-get upgrade -y && rm -rf /var/cache/apt
 
 # Install Flutter
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
@@ -22,5 +22,5 @@ ENV PORT 8080
 EXPOSE $PORT
 
 WORKDIR /usr/local/bin/app/server
-RUN sudo chmod +x server.sh
-ENTRYPOINT ./server.sh $PORT
+RUN chmod +x server.sh
+ENTRYPOINT sh server.sh $PORT
