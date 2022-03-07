@@ -23,4 +23,4 @@ EXPOSE $PORT
 
 WORKDIR /usr/local/bin/app/server
 RUN sudo chmod +x server.sh
-CMD ./server.sh $PORT
+ENTRYPOINT ./server.sh $PORT
