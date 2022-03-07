@@ -18,6 +18,6 @@ RUN flutter pub get
 RUN flutter build web
 
 # Document the exposed port and start server
-ENV PORT=
+ENV PORT $PORT
 EXPOSE $PORT
 ENTRYPOINT [ "/usr/local/bin/app/server/server.sh " + $PORT ]
