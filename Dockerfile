@@ -20,4 +20,4 @@ RUN flutter build web
 # Document the exposed port and start server
 ENV PORT $PORT
 EXPOSE $PORT
-ENTRYPOINT [ "/usr/local/bin/app/server/server.sh " + $PORT ]
+ENTRYPOINT /usr/local/bin/app/server/server.sh $PORT
