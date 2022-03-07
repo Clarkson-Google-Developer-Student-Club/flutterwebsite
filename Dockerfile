@@ -22,5 +22,5 @@ ENV PORT 8080
 EXPOSE $PORT
 
 WORKDIR /usr/local/bin/app/server
-RUN ["chmod", "+x", "/server.sh"]
-CMD /server.sh $PORT
+RUN ["chmod", "+x", "server.sh"]
+CMD ./server.sh $PORT
