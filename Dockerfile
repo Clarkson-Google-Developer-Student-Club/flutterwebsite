@@ -18,5 +18,6 @@ RUN flutter pub get
 RUN flutter build web
 
 # Document the exposed port and start server
-EXPOSE 8080
-ENTRYPOINT [ "/usr/local/bin/app/server/server.sh" ]
+ARG PORT = 8080
+EXPOSE $PORT
+ENTRYPOINT [ "/usr/local/bin/app/server/server.sh " + $PORT ]
