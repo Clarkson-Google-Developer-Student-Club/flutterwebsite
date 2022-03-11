@@ -1,9 +1,7 @@
 steps:
-  - name: 'gcr.io/$PROJECT_ID/flutter:stable'
-    args: ['build', 'web']
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    args:
-      - '-c'
-      - cp app.yaml build/web && cd build/web && gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy
-    entrypoint: bash
-timeout: 1600s
+- name: 'gcr.io/flutter-website-1337/flutterwebsite-image'
+  args: ['build', '-t', 'gcr.io/flutter-website-1337/flutterwebsite-image:latest', '.']
+- name: 'gcr.io/flutter-website-1337/flutterwebsite-image'
+  args: ['push', 'gcr.io/flutter-website-1337/flutterwebsite-image:latest']
+- name: 'gcr.io/flutter-website-1337/gcloud'
+  args: ['beta', 'run', 'deploy', 'flutterwebsite-cloudrun', '--image=gcr.io/flutter-website-1337/flutterwebsite-image:latest', '--region=us-east4']
